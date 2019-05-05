@@ -9,11 +9,15 @@ import org.springframework.stereotype.Indexed;
 import org.springframework.stereotype.Service;
 
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration //標明為Spring的Java配置文件
-@ComponentScan(value = "com.springboot.chapter3", includeFilters = @Filter(classes = Indexed.class)) //無配置只會掃描同個包或子包
+//無配置只會掃描同個包或子包
+@ComponentScan(value = "com.springboot.chapter3.*", includeFilters = @Filter(classes = Indexed.class)/*, lazyInit = true*/)
+//@Resource  //Java EE 的註解,非Spring (與@Qualifier的差異為面試題) 建議用Spring的註解
+//配置文件中定義掃描規則
 public class AppConfig {
 
     //@Bean(name = "user")
