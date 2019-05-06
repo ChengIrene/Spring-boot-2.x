@@ -39,12 +39,12 @@ public class Dog implements Animal, BeanNameAware, BeanFactoryAware, Application
     }
 
     @Override
-    public void destroy() throws Exception {
+    public void destroy() throws BeansException {
         System.out.println("DisposableBean的destroy方法");
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() throws BeansException {
         System.out.println("InitializingBean的afterPropertiesSet方法");
     }
 

@@ -21,6 +21,13 @@
 
     <dependencies>
 
+        <!-- 屬性文件依賴 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
@@ -33,7 +40,7 @@
             <scope>provided</scope>
         </dependency>
 
-        //引入第三方數據庫連接池DBCP
+        <!-- 引入第三方數據庫連接池DBCP -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>

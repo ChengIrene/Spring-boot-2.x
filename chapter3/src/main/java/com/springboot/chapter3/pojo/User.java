@@ -2,8 +2,6 @@ package com.springboot.chapter3.pojo;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
-
 
 @Component //要被掃瞄
 public class User {
