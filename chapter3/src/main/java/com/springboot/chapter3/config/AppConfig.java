@@ -1,15 +1,12 @@
 package com.springboot.chapter3.config;
 
+import com.springboot.chapter3.condition.DatabaseConditional;
 import com.springboot.chapter3.pojo.DataBaseProperties;
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan.Filter;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Indexed;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -27,7 +24,14 @@ public class AppConfig {
     }
 
     @Bean(name = "resource", destroyMethod = "close")
-    public DataSource getDataSource() {
+    @Conditional(DatabaseConditional.class)
+    public DataSource getDevDataSource(
+            @Value("${database.driverName}") String driver,
+            @Value("${database.url}") String url,
+            @Value("${database.username}") String username,
+            @Value("${database.password}") String password
+
+    ) {
         System.out.println("DB prop: " + this.dataBaseProperties);
 
         Properties props = new Properties();
